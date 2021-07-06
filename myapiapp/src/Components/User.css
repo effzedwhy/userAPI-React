@@ -1,0 +1,28 @@
+li {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.all-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.photo {
+  width: 50%;
+  margin-top: 20px;
+}
+img {
+  border-radius: 50%;
+}
+span {
+  font-weight: 800;
+}
