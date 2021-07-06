@@ -4,9 +4,9 @@ import "./User.css";
 const User = ({ title, first, last, country, email, age, phone, photo }) => {
   return (
     <li>
-      <h2>
+      <h1>
         {title}&nbsp;{first}&nbsp;{last}
-      </h2>
+      </h1>
       <div className="all-info">
         <div className="photo">
           <img src={photo} alt="user"></img>
