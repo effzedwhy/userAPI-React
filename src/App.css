@@ -128,9 +128,16 @@ table {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .fetch {
   width: 400px;
-  height: 100px;
+  height: 100%;
   background-color: darkmagenta;
   border-radius: 20px;
   display: flex;
@@ -151,12 +158,14 @@ table {
   margin: 50px auto;
 }
 
-button {
+button,
+select {
   padding: 16px 25px;
   height: auto;
   border-radius: 15px;
   border: none;
   background-color: white;
+  margin: 20px;
 }
 
 button:hover,
@@ -170,6 +179,7 @@ button:active {
     height: 100%;
     margin: 30px auto;
     padding: 20px;
+    align-items: center;
   }
   .users-container {
     width: 80vw;
