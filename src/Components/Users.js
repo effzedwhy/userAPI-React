@@ -2,6 +2,7 @@ import "./Users.css";
 import User from "./User";
 
 const Users = (props) => {
+
   return (
     <ul>
       {props.user.map((user) => (
@@ -15,6 +16,7 @@ const Users = (props) => {
           phone={user.phone}
           photo={user.photo}
           key={user.key}
+          gender={user.gender}
         />
       ))}
     </ul>
