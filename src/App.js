@@ -6,8 +6,10 @@ function App(props) {
   const [user, setUser] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  // const [gender, setGender] = useState("");
   const [url, setUrl] = useState("https://randomuser.me/api/");
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const [matchText, setMatchText] = useState(null);
 
   const handleChange = (e) => {
     if (e.target.value === "Female") {
@@ -20,7 +22,10 @@ function App(props) {
   async function fetchUserDetails(e) {
     setIsLoading(true);
     setError(null);
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+      setMatchText(null);
+    }
     setUrl(setUrl);
     try {
       const response = await fetch(url);
@@ -48,6 +53,7 @@ function App(props) {
       setError(error.message);
     }
   }
+
   let handleText = <Users user={user} />;
 
   if (isLoading && !error) {
@@ -58,8 +64,57 @@ function App(props) {
     handleText = <p>No results</p>;
   }
 
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 150) {
+      fetchUserDetails();
+      setMatchText(null);
+      //left
+    }
+
+    if (touchStart - touchEnd < -150) {
+      setMatchText("Great, you found your match!");
+      //right
+    }
+  };
+
+  const handleMouseDown = (e) => {
+    setTouchStart(e.clientX);
+  };
+
+  const handleMouseMove = (e) => {
+    setTouchEnd(e.clientX);
+  };
+
+  const handleMouseUp = () => {
+    if (touchStart - touchEnd > 150) {
+      console.log("left");
+      fetchUserDetails();
+      setMatchText(null);
+      //left
+    }
+
+    if (touchStart - touchEnd < -150) {
+      setMatchText("Great, you found your match!");
+      console.log("right");
+      //right
+    }
+  };
+
   return (
     <div>
+      <header>
+        <nav className="navbar">
+          <h1>Soulmate</h1>
+        </nav>
+      </header>
       <div className="fetch">
         <form onSubmit={fetchUserDetails}>
           <select onChange={handleChange} defaultValue="">
@@ -70,7 +125,22 @@ function App(props) {
           <button>Click to find your next love!</button>
         </form>
       </div>
-      <div className="users-container">{handleText}</div>
+
+      <div
+        className="users-container"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+      >
+        {handleText}
+      </div>
+      <div className="match-text">
+        <p>Swipe left for no and right for yes</p>
+        <h3>{matchText}</h3>
+      </div>
     </div>
   );
 }

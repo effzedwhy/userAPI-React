@@ -83,7 +83,6 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -122,10 +121,24 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-.App {
+body {
   width: 100%;
-  background-color: aliceblue;
+  background-color: rgb(240, 240, 240);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: darkmagenta;
+  color: white;
+  text-align: center;
+  padding: 0 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 3px;
+  font-size: 30px;
 }
 
 form {
@@ -166,11 +179,31 @@ select {
   border: none;
   background-color: white;
   margin: 20px;
+  border-radius: 20px;
 }
 
 button:hover,
 button:active {
   box-shadow: 2px 2px 16px 2px lightgray;
+}
+
+.match-text {
+  background-color: darkmagenta;
+  color: white;
+  text-align: center;
+  width: 50%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 30px auto;
+  border-radius: 20px;
+}
+h3 {
+  font-size: 22px;
+  font-weight: 800;
 }
 
 @media (max-width: 1060px) {
