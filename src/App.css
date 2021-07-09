@@ -135,10 +135,12 @@ body {
   background-color: rgb(167, 84, 167);
   color: white;
   text-align: center;
-  padding: 0 25px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   letter-spacing: 3px;
   font-size: 30px;
+}
+.navbar > h1 {
+  padding: 0 25px;
 }
 
 form {
