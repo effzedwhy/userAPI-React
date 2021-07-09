@@ -102,7 +102,7 @@ function App(props) {
     }
 
     if (touchStart - touchEnd < -150) {
-      setMatchText("Great, you found your match!");
+      setMatchText("~~~~~  Great, you found your match!  ~~~~~");
       console.log("right");
       //right
     }

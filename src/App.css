@@ -132,7 +132,6 @@ body {
   align-items: center;
   width: 100%;
   height: 50px;
-  background-color: darkmagenta;
   color: white;
   text-align: center;
   padding: 0 25px;
@@ -151,7 +150,6 @@ form {
 .fetch {
   width: 400px;
   height: 100%;
-  background-color: darkmagenta;
   border-radius: 20px;
   display: flex;
   justify-content: center;
@@ -188,7 +186,6 @@ button:active {
 }
 
 .match-text {
-  background-color: darkmagenta;
   color: white;
   text-align: center;
   width: 50%;
@@ -201,7 +198,6 @@ button:active {
   margin: 30px auto;
   border-radius: 20px;
 }
-h3 {
   font-size: 22px;
   font-weight: 800;
 }
