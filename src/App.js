@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Users from "./Components/Users";
+import Header from "./Components/Layout/Header";
 
 function App(props) {
   const [user, setUser] = useState([]);
@@ -11,14 +12,14 @@ function App(props) {
   const [touchEnd, setTouchEnd] = useState(0);
   const [matchText, setMatchText] = useState(null);
   const [gender, setGender] = useState(null);
-  
+
   const handleChange = (e) => {
     if (e.target.value === "Female") {
       setUrl("https://randomuser.me/api/?gender=female");
-       setGender("female");
+      setGender("female");
     } else if (e.target.value === "Male") {
       setUrl("https://randomuser.me/api/?gender=male");
-       setGender("male");
+      setGender("male");
     } else return url;
   };
 
@@ -76,13 +77,13 @@ function App(props) {
   };
 
   const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 100) {
+    if (touchStart - touchEnd > 150) {
       fetchUserDetails();
       setMatchText(null);
       //left
     }
 
-    if (touchStart - touchEnd < -100) {
+    if (touchStart - touchEnd < -150) {
       setMatchText("Great, you found your match!");
       //right
     }
@@ -103,21 +104,32 @@ function App(props) {
       setMatchText(null);
       //left
     }
-
     if (touchStart - touchEnd < -100) {
-      setMatchText("~~~~~  Great, you found your match!  ~~~~~");
+      setMatchText("Great, you found your match!");
       console.log("right");
       //right
     }
   };
 
+  let genderColor = "users-container";
+  switch (gender) {
+    case "male":
+      genderColor += " blue";
+      break;
+    case "female":
+      genderColor += " pink";
+      break;
+    default:
+      genderColor = "users-container";
+  }
+
   return (
     <div>
-      <header>
-        <nav className="navbar">
-          <h1>Soulmate</h1>
-        </nav>
-      </header>
+      <Header />
+      <div className="summary-text">
+        <h2>Find your soulmate today.</h2>
+        <p>If you like a profile swipe right and if you don't swipe left to see more.</p>
+      </div>
       <div className="fetch">
         <form onSubmit={fetchUserDetails}>
           <select onChange={handleChange} defaultValue="">
@@ -130,19 +142,17 @@ function App(props) {
       </div>
 
       <div
-       className={`users-container ${gender === "male" ? "blue" : "pink"}`}
+        className={genderColor}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
-      >   <h3>{matchText}</h3>
+      >
+        <h3>{matchText}</h3>
         {handleText}
       </div>
-      <div className="match-text">
-        <p>Swipe left for no and right for yes</p>
-              </div>
     </div>
   );
 }

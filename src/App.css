@@ -82,7 +82,7 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
+
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -123,24 +123,8 @@ table {
 }
 body {
   width: 100%;
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(255, 255, 255);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 50px;
-  background-color: rgb(167, 84, 167);
-  color: white;
-  text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  letter-spacing: 3px;
-  font-size: 30px;
-}
-.navbar > h1 {
-  padding: 0 25px;
 }
 
 form {
@@ -151,10 +135,10 @@ form {
 }
 
 .fetch {
-  width: 400px;
+  width: 500px;
   height: 100%;
-  background-color: rgb(167, 84, 167);
-  border-radius: 20px;
+  background-color: rgb(186, 135, 186);
+  border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -165,7 +149,8 @@ form {
   width: 50%;
   height: 100%;
   background-color: rgb(240, 189, 240);
-  border-radius: 20px;
+  border-radius: 15px;
+  flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -175,13 +160,13 @@ form {
 
 button,
 select {
-  padding: 16px 25px;
+  padding: 12px 25px;
   height: auto;
   border-radius: 15px;
   border: none;
   background-color: white;
   margin: 20px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 button:hover,
@@ -189,23 +174,37 @@ button:active {
   box-shadow: 2px 2px 16px 2px lightgray;
 }
 
-.match-text {
-  background-color: rgb(167, 84, 167);
+.summary-text {
+  background-color: rgb(102, 53, 102);
   color: white;
   text-align: center;
-  width: 50%;
-  height: 100px;
+  width: 70%;
+  height: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
   margin: 30px auto;
-  border-radius: 20px;
+  border-radius: 12px;
 }
-.match-text > h3 {
+
+.summary-text > h2 {
+  font-size: 20px;
+}
+.users-container > h3 {
   font-size: 22px;
   font-weight: 800;
+  margin: 30px 10px;
+  color: rgb(226, 43, 144);
+  text-align: center;
+}
+
+.blue {
+  background-color: lightblue;
+}
+.pink {
+  background-color: lightpink;
 }
 
 @media (max-width: 1060px) {
@@ -221,5 +220,9 @@ button:active {
     height: 100%;
     margin: 30px auto;
     padding: 0;
+  }
+  button,
+  select {
+    margin: 8px;
   }
 }

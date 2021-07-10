@@ -127,6 +127,7 @@ li {
   justify-content: space-around;
   flex-direction: column;
   padding: 20px;
+  margin-bottom: 20px;
 }
 
 .all-info {
