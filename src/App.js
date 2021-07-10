@@ -10,12 +10,15 @@ function App(props) {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [matchText, setMatchText] = useState(null);
-
+  const [gender, setGender] = useState(null);
+  
   const handleChange = (e) => {
     if (e.target.value === "Female") {
       setUrl("https://randomuser.me/api/?gender=female");
+       setGender("female");
     } else if (e.target.value === "Male") {
       setUrl("https://randomuser.me/api/?gender=male");
+       setGender("male");
     } else return url;
   };
 
@@ -73,13 +76,13 @@ function App(props) {
   };
 
   const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 150) {
+    if (touchStart - touchEnd > 100) {
       fetchUserDetails();
       setMatchText(null);
       //left
     }
 
-    if (touchStart - touchEnd < -150) {
+    if (touchStart - touchEnd < -100) {
       setMatchText("Great, you found your match!");
       //right
     }
@@ -94,14 +97,14 @@ function App(props) {
   };
 
   const handleMouseUp = () => {
-    if (touchStart - touchEnd > 150) {
+    if (touchStart - touchEnd > 100) {
       console.log("left");
       fetchUserDetails();
       setMatchText(null);
       //left
     }
 
-    if (touchStart - touchEnd < -150) {
+    if (touchStart - touchEnd < -100) {
       setMatchText("~~~~~  Great, you found your match!  ~~~~~");
       console.log("right");
       //right
@@ -127,20 +130,19 @@ function App(props) {
       </div>
 
       <div
-        className="users-container"
+       className={`users-container ${gender === "male" ? "blue" : "pink"}`}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
-      >
+      >   <h3>{matchText}</h3>
         {handleText}
       </div>
       <div className="match-text">
         <p>Swipe left for no and right for yes</p>
-        <h3>{matchText}</h3>
-      </div>
+              </div>
     </div>
   );
 }
