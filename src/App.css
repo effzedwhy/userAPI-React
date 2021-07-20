@@ -124,7 +124,6 @@ table {
 body {
   width: 100%;
   background-color: rgb(255, 255, 255);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 form {
@@ -179,20 +178,27 @@ button:active {
   color: white;
   text-align: center;
   width: 70%;
-  height: 50px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   margin: 30px auto;
   border-radius: 12px;
 }
 
 .summary-text > h2 {
-  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.summary-text > p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .users-container > h3 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 22px;
   font-weight: 800;
   margin: 30px 10px;
